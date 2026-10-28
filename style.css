@@ -1,63 +1,54 @@
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 /* =========================================================
-   01. PREMIUM VIOLET & LILAC DESIGN SYSTEM
+   TEAL × SOFT OFF-WHITE
+   Theme override for the supplied VARAD AGRO Streamlit CSS
    ========================================================= */
 
 :root {
-    color-scheme: dark;
+    color-scheme: light;
 
-    --agro-bg: #100b1c;
-    --agro-bg-soft: #171025;
-    --agro-surface: #1d1530;
-    --agro-surface-2: #251a3b;
+    --agro-bg: #EDE6E6;
+    --agro-bg-soft: #F5F0F0;
+    --agro-surface: #FFFFFF;
+    --agro-surface-2: #F8F4F4;
 
-    --agro-card: rgba(35, 25, 54, 0.78);
-    --agro-card-hover: rgba(47, 34, 70, 0.94);
+    --agro-card: rgba(255, 255, 255, 0.94);
+    --agro-card-hover: rgba(237, 230, 230, 0.98);
 
-    --agro-primary: #a78bfa;
-    --agro-primary-light: #c4b5fd;
-    --agro-primary-dark: #7c3aed;
+    --agro-primary: #156874;
+    --agro-primary-light: #247E89;
+    --agro-primary-dark: #104F59;
 
-    --agro-lilac: #d8b4fe;
-    --agro-lavender: #ede9fe;
-    --agro-pink: #f0abfc;
+    --agro-lilac: #156874;
+    --agro-lavender: #EDE6E6;
+    --agro-pink: #EDE6E6;
 
-    --agro-gold: #f5d0fe;
-    --agro-accent: #c084fc;
+    --agro-gold: #D5CACA;
+    --agro-accent: #247E89;
 
-    --agro-text: #faf7ff;
-    --agro-text-secondary: #d6c9e8;
-    --agro-muted: #a99abf;
+    --agro-text: #263238;
+    --agro-text-secondary: #37474F;
+    --agro-muted: #68777B;
 
-    --agro-border: rgba(216, 180, 254, 0.16);
-    --agro-border-strong: rgba(196, 181, 253, 0.34);
+    --agro-border: rgba(21, 104, 116, 0.16);
+    --agro-border-strong: rgba(21, 104, 116, 0.35);
 
-    --agro-success: #86efac;
-    --agro-warning: #fcd34d;
-    --agro-danger: #fda4af;
-    --agro-info: #a5b4fc;
+    --agro-success: #278653;
+    --agro-warning: #A66B00;
+    --agro-danger: #B42332;
+    --agro-info: #156874;
 
     --agro-radius-sm: 10px;
     --agro-radius-md: 16px;
     --agro-radius-lg: 22px;
     --agro-radius-xl: 28px;
 
-    --agro-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.20);
-
-    --agro-shadow-purple:
-        0 12px 35px rgba(124, 58, 237, 0.13);
-
-    --agro-transition:
-        all 0.22s ease;
+    --agro-shadow: 0 12px 35px rgba(21, 104, 116, 0.10);
+    --agro-shadow-purple: 0 12px 35px rgba(21, 104, 116, 0.12);
+    --agro-transition: all 0.22s ease;
 }
-
-/* =========================================================
-   02. GLOBAL RESET & TYPOGRAPHY
-   ========================================================= */
-
+/* Global background and typography */
 html,
 body,
 [class*="css"] {
@@ -68,43 +59,20 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
+body,
+.stApp {
     color: var(--agro-text);
 }
 
 .stApp {
-    color: var(--agro-text);
     background:
-        radial-gradient(
-            ellipse at 5% 0%,
-            rgba(124, 58, 237, 0.20),
-            transparent 35rem
-        ),
-        radial-gradient(
-            ellipse at 95% 8%,
-            rgba(216, 180, 254, 0.13),
-            transparent 30rem
-        ),
-        radial-gradient(
-            ellipse at 50% 100%,
-            rgba(91, 33, 182, 0.12),
-            transparent 38rem
-        ),
-        linear-gradient(
-            145deg,
-            #100b1c 0%,
-            #171025 48%,
-            #120d20 100%
-        );
+        radial-gradient(ellipse at 5% 0%, rgba(21, 104, 116, 0.07), transparent 35rem),
+        radial-gradient(ellipse at 95% 8%, rgba(36, 126, 137, 0.06), transparent 30rem),
+        linear-gradient(145deg, #EDE6E6 0%, #F8F4F4 52%, #EDE6E6 100%);
     background-attachment: fixed;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Manrope', sans-serif;
     color: var(--agro-text);
     letter-spacing: -0.035em;
@@ -124,14 +92,12 @@ h3 {
     font-size: 1.25rem;
 }
 
-p,
-li {
+p, li {
     color: var(--agro-text-secondary);
     line-height: 1.75;
 }
 
-strong,
-b {
+strong, b {
     color: var(--agro-text);
     font-weight: 800;
 }
@@ -146,12 +112,9 @@ a:hover {
     color: var(--agro-lilac);
 }
 
-/* =========================================================
-   03. STREAMLIT APP HEADER
-   ========================================================= */
-
+/* Streamlit header */
 [data-testid="stHeader"] {
-    background: rgba(16, 11, 28, 0.72);
+    background: rgba(237, 230, 230, 0.82);
     backdrop-filter: blur(18px);
 }
 
@@ -160,37 +123,28 @@ a:hover {
 }
 
 [data-testid="stDecoration"] {
-    background: linear-gradient(
-        90deg,
-        var(--agro-primary-dark),
-        var(--agro-lilac),
-        var(--agro-pink)
-    );
+    background: linear-gradient(90deg, #156874, #247E89, #EDE6E6);
     height: 3px;
 }
 
-/* Hide the sidebar completely */
-
+/* Hide sidebar as in the supplied stylesheet */
 [data-testid="stSidebar"],
 [data-testid="stSidebarNav"],
 [data-testid="collapsedControl"] {
     display: none !important;
 }
 
-/* =========================================================
-   04. MAIN WORKSPACE
-   ========================================================= */
+/* Main workspace */
+.block-container,
+[data-testid="stMainBlockContainer"] {
+    max-width: 1600px;
+}
 
 .block-container {
-    max-width: 1600px;
     padding-top: 1.65rem;
     padding-bottom: 3.5rem;
     padding-left: clamp(1rem, 3vw, 3rem);
     padding-right: clamp(1rem, 3vw, 3rem);
-}
-
-[data-testid="stMainBlockContainer"] {
-    max-width: 1600px;
 }
 
 .stMarkdown,
@@ -202,95 +156,62 @@ a:hover {
     gap: 1rem;
 }
 
-/* =========================================================
-   05. PREMIUM HERO SECTION
-   ========================================================= */
-
+/* Hero section */
 .hero {
     position: relative;
     display: flex;
     align-items: center;
     gap: 1.4rem;
     overflow: hidden;
-
     padding: 2rem;
     margin-bottom: 1.6rem;
-
     border: 1px solid var(--agro-border-strong);
     border-radius: var(--agro-radius-xl);
-
     background:
-        radial-gradient(
-            circle at 100% 0%,
-            rgba(216, 180, 254, 0.15),
-            transparent 45%
-        ),
-        linear-gradient(
-            120deg,
-            rgba(48, 31, 75, 0.96),
-            rgba(28, 19, 46, 0.94)
-        );
-
-    box-shadow:
-        var(--agro-shadow),
-        var(--agro-shadow-purple);
+        radial-gradient(circle at 100% 0%, rgba(21, 104, 116, 0.18), transparent 45%),
+        linear-gradient(120deg, #FFFFFF, #EDE6E6);
+    box-shadow: var(--agro-shadow), var(--agro-shadow-purple);
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    top: -90px;
-    right: -60px;
-
-    width: 250px;
-    height: 250px;
-
-    border-radius: 50%;
-    background: rgba(167, 139, 250, 0.10);
-    filter: blur(5px);
-    pointer-events: none;
-}
-
+.hero::before,
 .hero::after {
     content: "";
     position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero::before {
+    top: -90px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background: rgba(21, 104, 116, 0.12);
+    filter: blur(8px);
+}
+
+.hero::after {
     bottom: -110px;
     left: 35%;
-
     width: 220px;
     height: 220px;
-
-    border-radius: 50%;
-    background: rgba(240, 171, 252, 0.06);
+    background: rgba(36, 126, 137, 0.10);
     filter: blur(20px);
-    pointer-events: none;
 }
 
 .hero-icon {
     position: relative;
     z-index: 1;
-
     display: grid;
     place-items: center;
     flex: 0 0 76px;
-
     width: 76px;
     height: 76px;
-
-    border: 1px solid rgba(216, 180, 254, 0.35);
+    border: 1px solid var(--agro-border-strong);
     border-radius: 23px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(167, 139, 250, 0.24),
-        rgba(124, 58, 237, 0.10)
-    );
-
+    background: linear-gradient(145deg, rgba(21, 104, 116, 0.24), rgba(21, 104, 116, 0.22));
     font-size: 2.35rem;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 10px 28px rgba(124, 58, 237, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 10px 28px rgba(53,24,47,.22);
 }
 
 .hero-content {
@@ -300,19 +221,16 @@ a:hover {
 }
 
 .eyebrow {
-    margin-bottom: 0.55rem;
-
+    margin-bottom: .55rem;
     color: var(--agro-lilac);
-
-    font-size: 0.72rem;
+    font-size: .72rem;
     font-weight: 800;
-    letter-spacing: 0.20em;
+    letter-spacing: .20em;
     text-transform: uppercase;
 }
 
 .hero h1 {
-    margin: 0.2rem 0 0.55rem;
-
+    margin: .2rem 0 .55rem;
     font-family: 'Manrope', sans-serif;
     font-size: clamp(1.7rem, 3vw, 2.7rem);
     font-weight: 800;
@@ -326,24 +244,18 @@ a:hover {
 .hero p {
     max-width: 760px;
     margin: 0;
-
     color: var(--agro-muted);
-    font-size: 0.96rem;
+    font-size: .96rem;
     line-height: 1.8;
 }
 
-/* =========================================================
-   06. SECTION HEADINGS
-   ========================================================= */
-
+/* Section headings */
 .section-heading {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-
+    gap: .8rem;
     margin: 1.8rem 0 1rem;
-    padding-bottom: 0.8rem;
-
+    padding-bottom: .8rem;
     border-bottom: 1px solid var(--agro-border);
 }
 
@@ -355,62 +267,37 @@ a:hover {
 .section-icon {
     display: grid;
     place-items: center;
-
     width: 42px;
     height: 42px;
-
     border: 1px solid var(--agro-border-strong);
     border-radius: 13px;
-
-    background: rgba(167, 139, 250, 0.12);
-
+    background: rgba(21, 104, 116, 0.13);
     font-size: 1.3rem;
 }
 
-/* =========================================================
-   07. METRIC CARDS
-   ========================================================= */
-
+/* Metric cards */
 [data-testid="stMetric"] {
     position: relative;
     overflow: hidden;
-
     padding: 1.3rem 1.35rem;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-lg);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(42, 30, 63, 0.96),
-            rgba(27, 19, 44, 0.96)
-        );
-
+    background: linear-gradient(145deg, rgba(255, 255, 255, .97), rgba(255, 255, 255, .97));
     box-shadow: var(--agro-shadow);
-
     transition: var(--agro-transition);
 }
 
 [data-testid="stMetric"]:hover {
     transform: translateY(-4px);
-
     border-color: var(--agro-border-strong);
-
-    box-shadow:
-        var(--agro-shadow),
-        0 12px 30px rgba(124, 58, 237, 0.12);
+    box-shadow: var(--agro-shadow), 0 12px 30px rgba(21, 104, 116, .20);
 }
 
-[data-testid="stMetricLabel"] {
-    color: var(--agro-muted);
-    font-size: 0.84rem;
-    font-weight: 600;
-}
-
+[data-testid="stMetricLabel"],
 [data-testid="stMetricLabel"] p {
     color: var(--agro-muted);
-    font-size: 0.84rem;
+    font-size: .84rem;
+    font-weight: 600;
 }
 
 [data-testid="stMetricValue"] {
@@ -418,40 +305,33 @@ a:hover {
     font-family: 'Manrope', sans-serif;
     font-size: clamp(1.5rem, 2.5vw, 2.2rem);
     font-weight: 800;
-    letter-spacing: -0.04em;
+    letter-spacing: -.04em;
 }
 
 [data-testid="stMetricDelta"] {
-    font-size: 0.82rem;
+    font-size: .82rem;
     font-weight: 700;
 }
 
-/* =========================================================
-   08. CUSTOM DASHBOARD CARDS
-   ========================================================= */
-
+/* Custom cards */
 .agro-card {
     padding: 1.35rem;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-lg);
-
     background: var(--agro-card);
     box-shadow: var(--agro-shadow);
-
     transition: var(--agro-transition);
 }
 
 .agro-card:hover {
     transform: translateY(-3px);
-
     border-color: var(--agro-border-strong);
     background: var(--agro-card-hover);
 }
 
 .agro-card h3 {
     margin-top: 0;
-    margin-bottom: 0.7rem;
+    margin-bottom: .7rem;
 }
 
 .agro-card p {
@@ -460,8 +340,7 @@ a:hover {
 }
 
 .agro-card-value {
-    margin: 0.8rem 0;
-
+    margin: .8rem 0;
     color: var(--agro-lilac);
     font-family: 'Manrope', sans-serif;
     font-size: 2rem;
@@ -470,43 +349,27 @@ a:hover {
 
 .agro-card-label {
     color: var(--agro-muted);
-
-    font-size: 0.76rem;
+    font-size: .76rem;
     font-weight: 800;
-    letter-spacing: 0.09em;
+    letter-spacing: .09em;
     text-transform: uppercase;
 }
 
-/* =========================================================
-   09. BUTTONS
-   ========================================================= */
-
+/* Primary buttons */
 .stButton > button,
 .stDownloadButton > button,
 [data-testid="stFormSubmitButton"] > button,
 [data-testid="stLinkButton"] > a {
     min-height: 2.8rem;
-    padding: 0.65rem 1.2rem;
-
-    border: 1px solid rgba(216, 180, 254, 0.40);
+    padding: .65rem 1.2rem;
+    border: 1px solid rgba(21, 104, 116, .52);
     border-radius: 13px;
-
-    background: linear-gradient(
-        135deg,
-        #c4b5fd 0%,
-        #a78bfa 50%,
-        #c084fc 100%
-    );
-
-    color: #1b1030 !important;
-
+    background: linear-gradient(135deg, #156874 0%, #247E89 100%);
+    color: #FFFFFF !important;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.91rem;
+    font-size: .91rem;
     font-weight: 800;
-
-    box-shadow:
-        0 6px 18px rgba(124, 58, 237, 0.16);
-
+    box-shadow: 0 6px 18px rgba(21, 104, 116, .22);
     transition: var(--agro-transition);
 }
 
@@ -515,13 +378,11 @@ a:hover {
 [data-testid="stFormSubmitButton"] > button:hover,
 [data-testid="stLinkButton"] > a:hover {
     transform: translateY(-2px);
-
-    filter: brightness(1.08);
-
-    border-color: var(--agro-lilac);
-
-    box-shadow:
-        0 10px 26px rgba(167, 139, 250, 0.24);
+    filter: brightness(1.06);
+    border-color: var(--agro-primary-light);
+    background: linear-gradient(135deg, #104F59, #156874);
+    color: #FFFFFF !important;
+    box-shadow: 0 10px 26px rgba(21, 104, 116, .28);
 }
 
 .stButton > button:active,
@@ -535,51 +396,36 @@ a:hover {
     outline-offset: 3px;
 }
 
-/* Disabled buttons */
-
 .stButton > button:disabled,
 .stDownloadButton > button:disabled {
-    opacity: 0.45;
+    opacity: .45;
     cursor: not-allowed;
     transform: none;
 }
 
-/* =========================================================
-   10. SECONDARY BUTTONS
-   ========================================================= */
-
+/* Secondary buttons */
 button[kind="secondary"],
 .stButton > button[kind="secondary"] {
     border: 1px solid var(--agro-border-strong);
-
-    background: rgba(167, 139, 250, 0.08);
-
+    background: rgba(21, 104, 116, .08);
     color: var(--agro-lavender) !important;
-
     box-shadow: none;
 }
 
 button[kind="secondary"]:hover {
-    background: rgba(167, 139, 250, 0.17);
-    border-color: var(--agro-primary);
+    background: rgba(21, 104, 116, .18);
+    border-color: var(--agro-primary-light);
 }
 
-/* =========================================================
-   11. HORIZONTAL TOP NAVIGATION
-   ========================================================= */
-
+/* Horizontal top navigation */
 div[role="radiogroup"] {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
-
-    padding: 0.65rem;
-
+    gap: .55rem;
+    padding: .65rem;
     border: 1px solid var(--agro-border);
     border-radius: 19px;
-
-    background: rgba(25, 17, 40, 0.88);
-
+    background: rgba(255, 255, 255, .92);
     box-shadow: var(--agro-shadow);
 }
 
@@ -587,70 +433,49 @@ div[role="radiogroup"] > label {
     display: flex;
     align-items: center;
     justify-content: center;
-
     min-height: 2.65rem;
-    padding: 0.55rem 1rem;
-
+    padding: .55rem 1rem;
     border: 1px solid transparent;
     border-radius: 12px;
-
     background: transparent;
-
     color: var(--agro-muted);
-
-    font-size: 0.87rem;
+    font-size: .87rem;
     font-weight: 700;
-
     transition: var(--agro-transition);
 }
 
 div[role="radiogroup"] > label:hover {
     border-color: var(--agro-border-strong);
-
-    background: rgba(167, 139, 250, 0.09);
-
+    background: rgba(21, 104, 116, .10);
     color: var(--agro-lavender);
 }
 
 div[role="radiogroup"] > label:has(input:checked) {
-    border-color: rgba(216, 180, 254, 0.42);
-
-    background: linear-gradient(
-        135deg,
-        #c4b5fd,
-        #a78bfa
-    );
-
-    box-shadow: 0 5px 16px rgba(124, 58, 237, 0.20);
+    border-color: rgba(21, 104, 116, .55);
+    background: linear-gradient(135deg, #247E89, #EDE6E6);
+    box-shadow: 0 5px 16px rgba(21, 104, 116, .22);
 }
 
 div[role="radiogroup"] > label:has(input:checked) * {
-    color: #1b1030 !important;
+    color: #156874 !important;
     font-weight: 800;
 }
 
 div[role="radiogroup"] input {
-    accent-color: var(--agro-primary-dark);
+    accent-color: var(--agro-primary);
 }
 
-/* =========================================================
-   12. TEXT INPUTS
-   ========================================================= */
-
+/* Inputs */
 .stTextInput input,
 .stNumberInput input,
 .stDateInput input,
 .stTimeInput input,
 .stTextArea textarea {
     min-height: 2.8rem;
-
     border: 1px solid var(--agro-border-strong) !important;
     border-radius: 12px !important;
-
-    background: rgba(25, 17, 40, 0.90) !important;
-
+    background: rgba(255, 255, 255, .94) !important;
     color: var(--agro-text) !important;
-
     font-family: 'DM Sans', sans-serif;
     transition: var(--agro-transition);
 }
@@ -660,30 +485,22 @@ div[role="radiogroup"] input {
 .stDateInput input:focus,
 .stTimeInput input:focus,
 .stTextArea textarea:focus {
-    border-color: var(--agro-primary) !important;
-
-    box-shadow:
-        0 0 0 3px rgba(167, 139, 250, 0.13) !important;
+    border-color: var(--agro-primary-light) !important;
+    box-shadow: 0 0 0 3px rgba(21, 104, 116, .16) !important;
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: #9383ac !important;
+    color: #68777B !important;
     opacity: 1;
 }
 
-/* =========================================================
-   13. SELECTBOX & MULTISELECT
-   ========================================================= */
-
+/* Selectbox and multiselect */
 [data-baseweb="select"] > div {
     min-height: 2.8rem;
-
     border-color: var(--agro-border-strong) !important;
     border-radius: 12px !important;
-
-    background: rgba(25, 17, 40, 0.92) !important;
-
+    background: rgba(255, 255, 255, .94) !important;
     color: var(--agro-text) !important;
 }
 
@@ -696,8 +513,7 @@ textarea::placeholder {
 [data-baseweb="menu"] {
     border: 1px solid var(--agro-border-strong) !important;
     border-radius: 13px !important;
-
-    background: #211731 !important;
+    background: #156874 !important;
 }
 
 [role="option"] {
@@ -705,13 +521,10 @@ textarea::placeholder {
 }
 
 [role="option"]:hover {
-    background: rgba(167, 139, 250, 0.16) !important;
+    background: rgba(21, 104, 116, .18) !important;
 }
 
-/* =========================================================
-   14. CHECKBOXES & RADIO INPUTS
-   ========================================================= */
-
+/* Checkboxes and radio inputs */
 .stCheckbox label,
 .stRadio label,
 .stToggle label {
@@ -721,7 +534,7 @@ textarea::placeholder {
 
 .stCheckbox input,
 .stRadio input {
-    accent-color: var(--agro-primary);
+    accent-color: var(--agro-primary-light);
 }
 
 .stCheckbox label:hover,
@@ -729,55 +542,39 @@ textarea::placeholder {
     color: var(--agro-lilac);
 }
 
-/* =========================================================
-   15. FILE UPLOADER
-   ========================================================= */
-
+/* File uploader */
 [data-testid="stFileUploader"] {
-    padding: 0.65rem;
-
+    padding: .65rem;
     border: 1px dashed var(--agro-border-strong);
     border-radius: var(--agro-radius-lg);
-
-    background: rgba(167, 139, 250, 0.035);
-
+    background: rgba(21, 104, 116, .045);
     transition: var(--agro-transition);
 }
 
 [data-testid="stFileUploader"]:hover {
-    border-color: var(--agro-primary);
-
-    background: rgba(167, 139, 250, 0.075);
+    border-color: var(--agro-primary-light);
+    background: rgba(21, 104, 116, .09);
 }
 
 [data-testid="stFileUploaderDropzone"] {
     border: 1px dashed var(--agro-border-strong);
     border-radius: 14px;
-
-    background: rgba(25, 17, 40, 0.65);
+    background: rgba(255, 255, 255, .78);
 }
 
 [data-testid="stFileUploaderDropzone"] button {
     border: 1px solid var(--agro-border-strong);
     border-radius: 10px;
-
-    background: rgba(167, 139, 250, 0.14);
-
+    background: rgba(21, 104, 116, .15);
     color: var(--agro-lavender);
 }
 
-/* =========================================================
-   16. FORMS
-   ========================================================= */
-
+/* Forms */
 [data-testid="stForm"] {
     padding: 1.35rem;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-lg);
-
-    background: rgba(29, 21, 48, 0.78);
-
+    background: rgba(21, 104, 116, .76);
     box-shadow: var(--agro-shadow);
 }
 
@@ -785,24 +582,18 @@ textarea::placeholder {
     gap: 1rem;
 }
 
-/* =========================================================
-   17. DATAFRAMES & TABLES
-   ========================================================= */
-
+/* Dataframes and tables */
 [data-testid="stDataFrame"],
 [data-testid="stTable"] {
     overflow: hidden;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-lg);
-
-    background: rgba(29, 21, 48, 0.80);
-
+    background: rgba(21, 104, 116, .82);
     box-shadow: var(--agro-shadow);
 }
 
 [data-testid="stDataFrame"] * {
-    scrollbar-color: #6d4ca5 #1d1530;
+    scrollbar-color: #247E89 #156874;
     scrollbar-width: thin;
 }
 
@@ -812,79 +603,60 @@ textarea::placeholder {
 }
 
 [data-testid="stTable"] th {
-    padding: 0.9rem;
-
-    background: #302044;
-
+    padding: .9rem;
+    background: #FFFFFF;
     color: var(--agro-lilac);
     font-weight: 800;
     text-align: left;
 }
 
 [data-testid="stTable"] td {
-    padding: 0.8rem;
-
+    padding: .8rem;
     border-bottom: 1px solid var(--agro-border);
-
     color: var(--agro-text-secondary);
 }
 
 [data-testid="stTable"] tr:hover td {
-    background: rgba(167, 139, 250, 0.06);
+    background: rgba(21, 104, 116, .08);
 }
 
-/* =========================================================
-   18. TABS
-   ========================================================= */
-
+/* Tabs */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0.4rem;
-
-    padding: 0.45rem;
-
+    gap: .4rem;
+    padding: .45rem;
     border: 1px solid var(--agro-border);
     border-radius: 15px;
-
-    background: rgba(25, 17, 40, 0.82);
+    background: rgba(255, 255, 255, .88);
 }
 
 .stTabs [data-baseweb="tab"] {
     min-height: 2.7rem;
-    padding: 0.65rem 1.05rem;
-
+    padding: .65rem 1.05rem;
     border-radius: 10px;
-
     color: var(--agro-muted);
-
     font-weight: 700;
 }
 
 .stTabs [data-baseweb="tab"]:hover {
-    background: rgba(167, 139, 250, 0.09);
+    background: rgba(21, 104, 116, .10);
     color: var(--agro-lavender);
 }
 
 .stTabs [aria-selected="true"] {
-    background: rgba(167, 139, 250, 0.16) !important;
-
+    background: rgba(21, 104, 116, .18) !important;
     color: var(--agro-lilac) !important;
 }
 
 .stTabs [data-baseweb="tab-highlight"] {
-    background: var(--agro-primary);
+    background: var(--agro-primary-light);
 }
 
-/* =========================================================
-   19. EXPANDERS
-   ========================================================= */
-
+/* Expanders */
 [data-testid="stExpander"] {
     overflow: hidden;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-md);
-
-    background: rgba(29, 21, 48, 0.72);
+    background: rgba(21, 104, 116, .76);
 }
 
 [data-testid="stExpander"] summary {
@@ -893,81 +665,52 @@ textarea::placeholder {
 }
 
 [data-testid="stExpander"] summary:hover {
-    background: rgba(167, 139, 250, 0.07);
+    background: rgba(21, 104, 116, .08);
 }
 
-[data-testid="stExpander"] details {
-    border-radius: var(--agro-radius-md);
-}
-
-/* =========================================================
-   20. ALERTS & STATUS MESSAGES
-   ========================================================= */
-
-.stAlert {
-    border-radius: 14px;
-    border: 1px solid var(--agro-border);
-}
-
+/* Alerts and status messages */
+.stAlert,
 [data-testid="stAlert"] {
     border-radius: 14px;
+    border: 1px solid var(--agro-border);
 }
 
 [data-testid="stAlert"] p {
     color: var(--agro-text-secondary);
 }
 
-/* =========================================================
-   21. SUCCESS / WARNING / ERROR COLORS
-   ========================================================= */
-
 .agro-success {
-    padding: 0.9rem 1rem;
-
-    border: 1px solid rgba(134, 239, 172, 0.25);
+    padding: .9rem 1rem;
+    border: 1px solid rgba(39, 134, 83, .25);
     border-radius: 13px;
-
-    background: rgba(34, 197, 94, 0.09);
-
+    background: rgba(34, 197, 94, .09);
     color: var(--agro-success);
 }
 
 .agro-warning {
-    padding: 0.9rem 1rem;
-
-    border: 1px solid rgba(252, 211, 77, 0.25);
+    padding: .9rem 1rem;
+    border: 1px solid rgba(166, 107, 0, .25);
     border-radius: 13px;
-
-    background: rgba(234, 179, 8, 0.08);
-
+    background: rgba(234, 179, 8, .08);
     color: var(--agro-warning);
 }
 
 .agro-danger {
-    padding: 0.9rem 1rem;
-
-    border: 1px solid rgba(253, 164, 175, 0.25);
+    padding: .9rem 1rem;
+    border: 1px solid rgba(180, 35, 50, .25);
     border-radius: 13px;
-
-    background: rgba(244, 63, 94, 0.08);
-
+    background: rgba(244, 63, 94, .08);
     color: var(--agro-danger);
 }
 
-/* =========================================================
-   22. CHARTS
-   ========================================================= */
-
+/* Charts */
 [data-testid="stPlotlyChart"],
 [data-testid="stVegaLiteChart"],
 [data-testid="stArrowVegaLiteChart"] {
     overflow: hidden;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-lg);
-
-    background: rgba(29, 21, 48, 0.48);
-
+    background: rgba(21, 104, 116, .52);
     box-shadow: var(--agro-shadow);
 }
 
@@ -975,54 +718,44 @@ textarea::placeholder {
     border-radius: var(--agro-radius-lg);
 }
 
-/*
-   Plotly chart colors, backgrounds, grids, and legends
-   should also be configured in the Python chart layout.
-*/
+.agro-chart-title {
+    margin-bottom: .6rem;
+    color: var(--agro-lavender);
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
 
-/* =========================================================
-   23. PROGRESS BARS
-   ========================================================= */
+.agro-chart-description {
+    margin-bottom: 1rem;
+    color: var(--agro-muted);
+    font-size: .83rem;
+}
 
+/* Progress bars */
 [data-testid="stProgress"] > div {
     overflow: hidden;
-
     border-radius: 999px;
-
-    background: rgba(167, 139, 250, 0.13);
+    background: rgba(21, 104, 116, .14);
 }
 
 [data-testid="stProgress"] > div > div {
     border-radius: 999px;
-
-    background: linear-gradient(
-        90deg,
-        #7c3aed,
-        #a78bfa,
-        #d8b4fe
-    );
+    background: linear-gradient(90deg, #156874, #247E89, #247E89);
 }
 
-/* =========================================================
-   24. SLIDERS
-   ========================================================= */
-
+/* Sliders */
 [data-testid="stSlider"] [role="slider"] {
     border: 2px solid var(--agro-lavender);
-
-    background: var(--agro-primary);
-
-    box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.12);
+    background: var(--agro-primary-light);
+    box-shadow: 0 0 0 4px rgba(21, 104, 116, .14);
 }
 
 [data-testid="stSlider"] [data-baseweb="slider"] > div {
-    background-color: rgba(167, 139, 250, 0.16);
+    background-color: rgba(21, 104, 116, .18);
 }
 
-/* =========================================================
-   25. CAPTIONS & FIELD LABELS
-   ========================================================= */
-
+/* Captions and labels */
 label,
 .stCaption,
 [data-testid="stCaptionContainer"] {
@@ -1031,151 +764,100 @@ label,
 
 [data-testid="stWidgetLabel"] p {
     color: var(--agro-text-secondary);
-    font-size: 0.86rem;
+    font-size: .86rem;
     font-weight: 700;
 }
 
 .stCaption {
-    font-size: 0.8rem;
+    font-size: .8rem;
     line-height: 1.65;
 }
 
-/* =========================================================
-   26. DIVIDERS
-   ========================================================= */
-
-hr {
+/* Dividers */
+hr,
+[data-testid="stMarkdownContainer"] hr {
     margin: 1.5rem 0;
-
     border: none;
     border-top: 1px solid var(--agro-border);
 }
 
-[data-testid="stMarkdownContainer"] hr {
-    border-top: 1px solid var(--agro-border);
-}
-
-/* =========================================================
-   27. CUSTOM BADGES
-   ========================================================= */
-
+/* Badges */
 .agro-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-
-    padding: 0.35rem 0.75rem;
-
+    gap: .4rem;
+    padding: .35rem .75rem;
     border: 1px solid var(--agro-border-strong);
     border-radius: 999px;
-
-    background: rgba(167, 139, 250, 0.11);
-
+    background: rgba(21, 104, 116, .12);
     color: var(--agro-lilac);
-
-    font-size: 0.74rem;
+    font-size: .74rem;
     font-weight: 800;
-    letter-spacing: 0.035em;
+    letter-spacing: .035em;
 }
 
 .agro-badge-success {
-    border-color: rgba(134, 239, 172, 0.25);
-
-    background: rgba(34, 197, 94, 0.09);
-
+    border-color: rgba(39, 134, 83, .25);
+    background: rgba(34, 197, 94, .09);
     color: var(--agro-success);
 }
 
 .agro-badge-warning {
-    border-color: rgba(252, 211, 77, 0.25);
-
-    background: rgba(234, 179, 8, 0.09);
-
+    border-color: rgba(166, 107, 0, .25);
+    background: rgba(234, 179, 8, .09);
     color: var(--agro-warning);
 }
 
-/* =========================================================
-   28. CUSTOM STATUS INDICATORS
-   ========================================================= */
-
+/* Status indicators */
 .status-dot {
     display: inline-block;
-
     width: 8px;
     height: 8px;
-
-    margin-right: 0.45rem;
-
+    margin-right: .45rem;
     border-radius: 50%;
-
     background: var(--agro-success);
-
-    box-shadow: 0 0 10px rgba(134, 239, 172, 0.35);
+    box-shadow: 0 0 10px rgba(39, 134, 83, .35);
 }
 
 .status-dot-warning {
     background: var(--agro-warning);
-    box-shadow: 0 0 10px rgba(252, 211, 77, 0.30);
+    box-shadow: 0 0 10px rgba(166, 107, 0, .30);
 }
 
 .status-dot-danger {
     background: var(--agro-danger);
-    box-shadow: 0 0 10px rgba(253, 164, 175, 0.30);
+    box-shadow: 0 0 10px rgba(180, 35, 50, .30);
 }
 
-/* =========================================================
-   29. LOGIN & AUTHENTICATION PANELS
-   ========================================================= */
-
+/* Login and authentication panels */
 .login-card {
     width: 100%;
     max-width: 520px;
-
     margin: 2rem auto;
     padding: 2rem;
-
     border: 1px solid var(--agro-border-strong);
     border-radius: 26px;
-
     background:
-        radial-gradient(
-            circle at 100% 0%,
-            rgba(216, 180, 254, 0.12),
-            transparent 45%
-        ),
-        rgba(29, 21, 48, 0.94);
-
-    box-shadow:
-        0 24px 65px rgba(0, 0, 0, 0.25),
-        0 10px 35px rgba(124, 58, 237, 0.10);
+        radial-gradient(circle at 100% 0%, rgba(21, 104, 116, .14), transparent 45%),
+        rgba(21, 104, 116, .96);
+    box-shadow: 0 24px 65px rgba(21, 104, 116, .28), 0 10px 35px rgba(21, 104, 116, .16);
 }
 
 .login-logo {
     display: grid;
     place-items: center;
-
     width: 78px;
     height: 78px;
-
     margin: 0 auto 1.25rem;
-
     border: 1px solid var(--agro-border-strong);
     border-radius: 24px;
-
-    background: linear-gradient(
-        135deg,
-        rgba(167, 139, 250, 0.24),
-        rgba(192, 132, 252, 0.10)
-    );
-
+    background: linear-gradient(135deg, rgba(21, 104, 116, .24), rgba(21, 104, 116, .20));
     font-size: 2.4rem;
 }
 
 .login-title {
-    margin-bottom: 0.5rem;
-
+    margin-bottom: .5rem;
     color: var(--agro-text);
-
     font-family: 'Manrope', sans-serif;
     font-size: 1.8rem;
     font-weight: 800;
@@ -1184,48 +866,34 @@ hr {
 
 .login-subtitle {
     margin-bottom: 1.5rem;
-
     color: var(--agro-muted);
-    font-size: 0.9rem;
+    font-size: .9rem;
     text-align: center;
 }
 
-/* =========================================================
-   30. FILTER PANELS
-   ========================================================= */
-
+/* Filter panels */
 .filter-panel {
     padding: 1.1rem;
-
     border: 1px solid var(--agro-border);
     border-radius: var(--agro-radius-lg);
-
-    background: rgba(29, 21, 48, 0.75);
+    background: rgba(21, 104, 116, .78);
 }
 
 .filter-title {
-    margin-bottom: 0.9rem;
-
+    margin-bottom: .9rem;
     color: var(--agro-lilac);
-
-    font-size: 0.76rem;
+    font-size: .76rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: .12em;
     text-transform: uppercase;
 }
 
-/* =========================================================
-   31. EMPTY STATES
-   ========================================================= */
-
+/* Empty states */
 .empty-state {
     padding: 3rem 1.5rem;
-
     border: 1px dashed var(--agro-border-strong);
     border-radius: var(--agro-radius-xl);
-
-    background: rgba(167, 139, 250, 0.035);
-
+    background: rgba(21, 104, 116, .045);
     text-align: center;
 }
 
@@ -1235,33 +903,24 @@ hr {
 }
 
 .empty-state h3 {
-    margin-bottom: 0.6rem;
-
+    margin-bottom: .6rem;
     color: var(--agro-lavender);
 }
 
 .empty-state p {
     max-width: 520px;
-
     margin: 0 auto;
-
     color: var(--agro-muted);
 }
 
-/* =========================================================
-   32. FOOTER
-   ========================================================= */
-
+/* Footer and multipage links */
 .app-footer {
     margin-top: 2.5rem;
-    padding: 1.2rem 0.25rem;
-
+    padding: 1.2rem .25rem;
     border-top: 1px solid var(--agro-border);
-
     color: var(--agro-muted);
-
-    font-size: 0.77rem;
-    letter-spacing: 0.035em;
+    font-size: .77rem;
+    letter-spacing: .035em;
     text-align: center;
 }
 
@@ -1269,156 +928,116 @@ hr {
     color: var(--agro-lilac);
 }
 
-/* =========================================================
-   33. STREAMLIT MULTIPAGE SUPPORT
-   ========================================================= */
-
 [data-testid="stPageLink"] a {
     border: 1px solid var(--agro-border);
     border-radius: 12px;
-
-    background: rgba(167, 139, 250, 0.07);
-
+    background: rgba(21, 104, 116, .08);
     color: var(--agro-lavender);
-
     transition: var(--agro-transition);
 }
 
 [data-testid="stPageLink"] a:hover {
     border-color: var(--agro-border-strong);
-    background: rgba(167, 139, 250, 0.15);
+    background: rgba(21, 104, 116, .17);
 }
 
-/* =========================================================
-   34. POPOVERS & TOOLTIPS
-   ========================================================= */
-
+/* Popovers and tooltips */
 [data-baseweb="tooltip"] {
     border: 1px solid var(--agro-border-strong);
     border-radius: 10px;
-
-    background: #302044;
-
+    background: #FFFFFF;
     color: var(--agro-text);
 }
 
-/* =========================================================
-   35. SCROLLBARS
-   ========================================================= */
-
+/* Scrollbars */
 ::-webkit-scrollbar {
     width: 9px;
     height: 9px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #140e21;
+    background: #EDE6E6;
 }
 
 ::-webkit-scrollbar-thumb {
-    border: 2px solid #140e21;
+    border: 2px solid #EDE6E6;
     border-radius: 999px;
-
-    background: #62458b;
+    background: #104F59;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #a78bfa;
+    background: #EDE6E6;
 }
 
-/* =========================================================
-   36. SELECTION COLORS
-   ========================================================= */
-
+/* Selection and spinner */
 ::selection {
-    background: rgba(167, 139, 250, 0.40);
-    color: #ffffff;
+    background: rgba(21, 104, 116, .42);
+    color: #FFFFFF;
 }
 
-/* =========================================================
-   37. SPINNER
-   ========================================================= */
-
-[data-testid="stSpinner"] > div {
-    border-top-color: var(--agro-primary) !important;
-}
-
+[data-testid="stSpinner"] > div,
 .stSpinner > div {
-    border-top-color: var(--agro-primary) !important;
+    border-top-color: var(--agro-primary-light) !important;
 }
 
-/* =========================================================
-   38. TOAST NOTIFICATIONS
-   ========================================================= */
-
+/* Toast notifications */
 [data-testid="stToast"] {
     border: 1px solid var(--agro-border-strong);
     border-radius: 14px;
-
-    background: #241834;
-
+    background: #FFFFFF;
+    color: var(--agro-text);
     box-shadow: var(--agro-shadow);
 }
 
-/* =========================================================
-   39. CHART LEGENDS & TEXT
-   ========================================================= */
-
-.agro-chart-title {
-    margin-bottom: 0.6rem;
-
-    color: var(--agro-lavender);
-
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 800;
-}
-
-.agro-chart-description {
-    margin-bottom: 1rem;
-
-    color: var(--agro-muted);
-    font-size: 0.83rem;
-}
-
-/* =========================================================
-   40. ANIMATIONS
-   ========================================================= */
-
+/* Animation */
 @keyframes agroFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes agroGlow {
-    0%,
-    100% {
-        box-shadow: 0 0 18px rgba(167, 139, 250, 0.08);
-    }
-
-    50% {
-        box-shadow: 0 0 28px rgba(167, 139, 250, 0.17);
-    }
+    0%, 100% { box-shadow: 0 0 18px rgba(21, 104, 116, .08); }
+    50% { box-shadow: 0 0 28px rgba(21, 104, 116, .18); }
 }
 
 .hero,
 [data-testid="stMetric"],
 .agro-card,
 [data-testid="stForm"] {
-    animation: agroFadeIn 0.45s ease both;
+    animation: agroFadeIn .45s ease both;
 }
 
-/* =========================================================
-   41. RESPONSIVE TABLET DESIGN
-   ========================================================= */
+/* Keep text in normal title case */
+.stMarkdown h1,
+.stMarkdown h2,
+.stMarkdown h3,
+.stMarkdown h4,
+.stButton button,
+.stTextInput label,
+.stSelectbox label {
+    text-transform: none;
+}
 
+[data-testid="stMarkdownContainer"] {
+    overflow-wrap: anywhere;
+}
+
+.stCaption,
+small {
+    color: var(--agro-muted);
+}
+
+*:focus-visible {
+    outline-color: var(--agro-primary-light);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 11px;
+}
+
+/* Responsive tablet */
 @media (max-width: 1050px) {
     .block-container {
         padding-left: 1.25rem;
@@ -1438,36 +1057,28 @@ hr {
     }
 }
 
-/* =========================================================
-   42. RESPONSIVE MOBILE DESIGN
-   ========================================================= */
-
+/* Responsive mobile */
 @media (max-width: 700px) {
     .block-container {
         padding-top: 1rem;
         padding-bottom: 2rem;
-        padding-left: 0.85rem;
-        padding-right: 0.85rem;
+        padding-left: .85rem;
+        padding-right: .85rem;
     }
 
     .hero {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
-
         padding: 1.2rem;
-
         border-radius: 19px;
     }
 
     .hero-icon {
         flex-basis: 58px;
-
         width: 58px;
         height: 58px;
-
         border-radius: 17px;
-
         font-size: 1.8rem;
     }
 
@@ -1476,26 +1087,24 @@ hr {
     }
 
     .hero p {
-        font-size: 0.88rem;
+        font-size: .88rem;
     }
 
     .eyebrow {
-        font-size: 0.66rem;
-        letter-spacing: 0.14em;
+        font-size: .66rem;
+        letter-spacing: .14em;
     }
 
     div[role="radiogroup"] {
-        gap: 0.4rem;
-        padding: 0.5rem;
-
+        gap: .4rem;
+        padding: .5rem;
         border-radius: 15px;
     }
 
     div[role="radiogroup"] > label {
         min-height: 2.4rem;
-        padding: 0.45rem 0.65rem;
-
-        font-size: 0.78rem;
+        padding: .45rem .65rem;
+        font-size: .78rem;
     }
 
     [data-testid="stMetric"] {
@@ -1510,7 +1119,6 @@ hr {
     .login-card {
         margin: 1rem auto;
         padding: 1.25rem;
-
         border-radius: 20px;
     }
 
@@ -1519,61 +1127,18 @@ hr {
     }
 
     .app-footer {
-        font-size: 0.7rem;
+        font-size: .7rem;
     }
 }
 
-/* =========================================================
-   43. ACCESSIBILITY & REDUCED MOTION
-   ========================================================= */
-
+/* Accessibility: honor reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
         scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
     }
-}
-
-/* =========================================================
-   44. FINAL POLISH
-   ========================================================= */
-
-/* Normal title case: do not force all text into uppercase. */
-
-.stMarkdown h1,
-.stMarkdown h2,
-.stMarkdown h3,
-.stMarkdown h4,
-.stButton button,
-.stTextInput label,
-.stSelectbox label {
-    text-transform: none;
-}
-
-/* Keep app text readable and consistent. */
-
-[data-testid="stMarkdownContainer"] {
-    overflow-wrap: anywhere;
-}
-
-.stCaption,
-small {
-    color: var(--agro-muted);
-}
-
-/* Clean focus indicator for keyboard users. */
-
-*:focus-visible {
-    outline-color: var(--agro-primary-light);
-}
-
-/* Maintain consistent rounded corners for media. */
-
-img {
-    max-width: 22%;
-    border-radius: 11px;
 }
