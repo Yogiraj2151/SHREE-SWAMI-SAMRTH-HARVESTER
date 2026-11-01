@@ -24,8 +24,8 @@ CSS_FILE = BASE_DIR / "style.css"
 st.set_page_config(
     page_title="VARAD AGRO INDSTRIES/SHREE SWAMI SAMARTH HARVESTER",
     page_icon="🚜",
-    layout="wide",
-    initial_sidebar_state="collapsed",
+    layout="centered",
+    initial_sidebar_state="expanded",
 )
 
 
@@ -44,7 +44,7 @@ if css_path.exists():
 # Display your logo and brand name
 logo_path = Path(__file__).parent / "logo.png"
 
-col1, col2 = st.columns([1, 5], vertical_alignment="center")
+col1, col2 = st.columns([4,8], vertical_alignment="center")
 
 with col1:
     if logo_path.exists():
@@ -364,13 +364,23 @@ def render_kpis(frame: pd.DataFrame) -> None:
 
 
 # ------------------------------ HEADER / NAVIGATION ------------------------------
+     
+
+
+
+
+
+
+
+
+
 
 
 # ------------------------------ TOP NAVIGATION (NO SIDEBAR) ------------------------------
 nav_options = [
     "📊 Dashboard", "➕ Add Record", "🤖 Business Assistant",
     "👥 Customers", "📈 Analytics", "💳 Pending Payments",
-    "📝 Manage Records", "📥 Import / Export",
+    "📝 Manage Records", "📥 Import / Export", "⛽ Diesel Management",
 ]
 st.markdown('<div class="workspace-label">WORKSPACE NAVIGATION</div>', unsafe_allow_html=True)
 page = st.radio(
@@ -748,6 +758,130 @@ elif page == "📥 Import / Export":
                     st.rerun()
         except Exception as exc:
             st.error(f"Could not read CSV: {exc}")
+
+# ------------------------------ DIESEL MANAGEMENT (SEPARATE PAGE) ------------------------------
+elif page == "⛽ Diesel Management":
+    st.subheader("⛽ Diesel Management")
+    st.caption("Record diesel purchases and track fuel expenses separately from customer/land records.")
+
+    DIESEL_TABLE = "diesel_records"
+    diesel_columns = ["id", "Date", "Vehicle / Machine", "Place / Vendor", "Litres", "Price/Litre", "Total Cost", "Notes"]
+
+    if not DB_READY or supabase is None:
+        st.error("Supabase is not connected. Check your SUPABASE_URL and SUPABASE_KEY.")
+    else:
+        # Load diesel entries independently from land_records.
+        try:
+            diesel_result = supabase.table(DIESEL_TABLE).select("*").order("id", desc=True).execute()
+            diesel_rows = diesel_result.data or []
+            diesel_df = pd.DataFrame(diesel_rows)
+        except Exception as exc:
+            diesel_rows = []
+            diesel_df = pd.DataFrame()
+            st.error("Could not load diesel records. Create the diesel_records table using the SQL shown below.")
+            st.caption(str(exc)[:400])
+
+        with st.form("add_diesel_record_form", clear_on_submit=True):
+            st.markdown("#### Add diesel expense")
+            d1, d2 = st.columns(2)
+            with d1:
+                diesel_date = st.date_input("Diesel purchase date", value=date.today(), key="diesel_date")
+                vehicle = st.text_input("Vehicle / Machine", placeholder="e.g. Harvester / Tractor", key="diesel_vehicle")
+                diesel_place = st.text_input("Place / Petrol pump", placeholder="Village or pump name", key="diesel_place")
+            with d2:
+                litres = st.number_input("Diesel quantity (litres)", min_value=0.0, step=1.0, format="%.2f", key="diesel_litres")
+                price_per_litre = st.number_input("Price per litre (₹)", min_value=0.0, step=1.0, format="%.2f", key="diesel_rate")
+                notes = st.text_input("Notes (optional)", placeholder="Trip, receipt number, etc.", key="diesel_notes")
+            diesel_total = litres * price_per_litre
+            st.metric("Total diesel expense", money(diesel_total))
+            diesel_submit = st.form_submit_button("💾 Save diesel record", use_container_width=True)
+
+        if diesel_submit:
+            if litres <= 0:
+                st.error("Enter diesel quantity greater than zero.")
+            elif price_per_litre <= 0:
+                st.error("Price per litre must be greater than zero.")
+            else:
+                payload = {
+                    "Date": diesel_date.isoformat(),
+                    "Vehicle / Machine": vehicle.strip(),
+                    "Place / Vendor": diesel_place.strip(),
+                    "Litres": float(litres),
+                    "Price/Litre": float(price_per_litre),
+                    "Total Cost": round(float(diesel_total), 2),
+                    "Notes": notes.strip(),
+                }
+                try:
+                    supabase.table(DIESEL_TABLE).insert(payload).execute()
+                    st.success("Diesel expense saved successfully.")
+                    st.rerun()
+                except Exception as exc:
+                    st.error(f"Could not save diesel record: {exc}")
+
+        # Refresh data after the form so the page shows saved entries.
+        try:
+            diesel_result = supabase.table(DIESEL_TABLE).select("*").order("id", desc=True).execute()
+            diesel_rows = diesel_result.data or []
+            diesel_df = pd.DataFrame(diesel_rows)
+        except Exception:
+            diesel_df = pd.DataFrame()
+
+        st.divider()
+        st.markdown("#### Diesel expense overview")
+        if diesel_df.empty:
+            st.info("No diesel expenses recorded yet.")
+        else:
+            for col in diesel_columns:
+                if col not in diesel_df.columns:
+                    diesel_df[col] = 0 if col in ("Litres", "Price/Litre", "Total Cost") else ""
+            for col in ("Litres", "Price/Litre", "Total Cost"):
+                diesel_df[col] = pd.to_numeric(diesel_df[col], errors="coerce").fillna(0)
+            diesel_df["Date"] = diesel_df["Date"].fillna("").astype(str)
+            total_spent = float(diesel_df["Total Cost"].sum())
+            total_litres = float(diesel_df["Litres"].sum())
+            avg_rate = total_spent / total_litres if total_litres else 0
+            k1, k2, k3 = st.columns(3)
+            k1.metric("Total diesel expense", money(total_spent))
+            k2.metric("Total litres purchased", f"{total_litres:,.2f} L")
+            k3.metric("Average cost per litre", money(avg_rate))
+
+            diesel_dates = pd.to_datetime(diesel_df["Date"], errors="coerce")
+            valid = diesel_df.loc[diesel_dates.notna()].copy()
+            if not valid.empty:
+                valid["Month"] = pd.to_datetime(valid["Date"], errors="coerce").dt.to_period("M").astype(str)
+                monthly_diesel = valid.groupby("Month", as_index=False).agg(
+                    Litres=("Litres", "sum"), Expense=("Total Cost", "sum")
+                )
+                st.markdown("#### Monthly diesel expenses")
+                chart = px.bar(monthly_diesel, x="Month", y="Expense", text="Expense", title="Diesel expense by month")
+                chart.update_traces(texttemplate="₹%{text:,.0f}", textposition="outside")
+                st.plotly_chart(plot_layout(chart), use_container_width=True)
+                st.dataframe(monthly_diesel, hide_index=True, use_container_width=True)
+
+            st.markdown("#### Diesel purchase history")
+            display_cols = [c for c in diesel_columns if c in diesel_df.columns]
+            st.dataframe(diesel_df[display_cols], hide_index=True, use_container_width=True)
+            st.download_button(
+                "📥 Download diesel records CSV",
+                diesel_df[display_cols].to_csv(index=False).encode("utf-8-sig"),
+                file_name=f"varad_agro_diesel_records_{date.today().isoformat()}.csv",
+                mime="text/csv",
+                use_container_width=True,
+            )
+            delete_id = st.selectbox(
+                "Select a diesel record to delete",
+                diesel_df["id"].tolist(),
+                format_func=lambda rid: f"#{rid} · {diesel_df.loc[diesel_df['id'] == rid, 'Date'].iloc[0]} · {money(diesel_df.loc[diesel_df['id'] == rid, 'Total Cost'].iloc[0])}",
+                key="delete_diesel_id",
+            )
+            confirm_diesel_delete = st.checkbox("Confirm deletion of this diesel record", key="confirm_diesel_delete")
+            if st.button("🗑️ Delete diesel record", disabled=not confirm_diesel_delete, key="delete_diesel_record_button"):
+                try:
+                    supabase.table(DIESEL_TABLE).delete().eq("id", int(delete_id)).execute()
+                    st.success("Diesel record deleted.")
+                    st.rerun()
+                except Exception as exc:
+                    st.error(f"Could not delete diesel record: {exc}")
 
 st.markdown(
     '<div class="app-footer">VARAD AGRO INDUSTRIES · ADVANCED BUSINESS HUB &nbsp; • &nbsp; Keep a regular CSV/Excel backup of your business records.</div>',
