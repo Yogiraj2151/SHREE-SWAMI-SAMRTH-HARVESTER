@@ -1,1 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
+:root {
+    --bg: #160F19;
+    --card: #241925;
+    --card2: #30202E;
+    --pink: #D8A0AC;
+    --pink-light: #F0C8CE;
+    --cream: #F8EFE8;
+    --muted: #C5AEBB;
+    --border: rgba(240, 200, 206, 0.18);
+    --green: #A8C7A0;
+}
+
+html, body, [class*="css"] {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.stApp {
+    background:
+        radial-gradient(circle at 10% 5%, #392238 0%, transparent 35%),
+        radial-gradient(circle at 90% 90%, #35202F 0%, transparent 35%),
+        var(--bg);
+    color: var(--cream);
+}
+
+/* Main container */
+.block-container {
+    max-width: 1450px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* Hide Streamlit header and footer */
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+footer {
+    visibility: hidden;
+}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: #211522;
+    border-right: 1px solid var(--border);
+}
+
+section[data-testid="stSidebar"] * {
+    color: var(--cream);
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--pink-light) !important;
+    font-weight: 800 !important;
+}
+
+p, label, span, div {
+    color: var(--cream);
+}
+
+/* Brand header */
+.brand-header {
+    padding: 28px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #392238, #241925);
+    border: 1px solid var(--border);
+    margin-bottom: 25px;
+}
+
+.brand-header h1 {
+    font-size: 34px;
+    margin-bottom: 5px;
+}
+
+.brand-header p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* Cards */
+div[data-testid="stMetric"] {
+    background: linear-gradient(145deg, #30202E, #241925);
+    border: 1px solid var(--border);
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--muted) !important;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--pink-light) !important;
+    font-weight: 800;
+}
+
+/* Buttons */
+.stButton > button,
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #D8A0AC, #B9798A);
+    color: #241925 !important;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 800;
+    transition: 0.25s ease;
+}
+
+.stButton > button:hover,
+.stDownloadButton > button:hover {
+    background: #F0C8CE;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(216,160,172,0.2);
+}
+
+/* Inputs */
+.stTextInput input,
+.stNumberInput input,
+.stDateInput input,
+.stTextArea textarea {
+    background: #30202E !important;
+    color: #F8EFE8 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+}
+
+.stSelectbox div[data-baseweb="select"] > div,
+.stMultiSelect div[data-baseweb="select"] > div {
+    background: #30202E !important;
+    color: var(--cream) !important;
+    border-color: var(--border) !important;
+    border-radius: 10px !important;
+}
+
+/* Forms */
+div[data-testid="stForm"] {
+    background: rgba(48, 32, 46, 0.75);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+}
+
+/* Tables */
+div[data-testid="stDataFrame"] {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* Tabs */
+button[data-baseweb="tab"] {
+    color: var(--muted) !important;
+    font-weight: 700;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--pink-light) !important;
+}
+
+/* Alerts */
+div[data-testid="stAlert"] {
+    border-radius: 14px;
+    border: 1px solid var(--border);
+}
+
+/* Divider */
+hr {
+    border-color: var(--border);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1rem;
+    }
+
+    .brand-header {
+        padding: 18px;
+    }
+
+    .brand-header h1 {
+        font-size: 24px;
+    }
+
+    div[data-testid="stMetric"] {
+        padding: 14px;
+    }
+}
