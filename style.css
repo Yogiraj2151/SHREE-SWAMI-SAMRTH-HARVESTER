@@ -1,1 +1,334 @@
+/* =====================================================
+   VARAD AGRO INDUSTRIES
+   PREMIUM BORDEAUX + GREEN + CREAM THEME
+===================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+    --burgundy: #641E32;
+    --burgundy-dark: #401222;
+    --green: #245B40;
+    --green-dark: #173D2B;
+    --cream: #F8F4E9;
+    --white: #FFFFFF;
+    --gold: #C49A45;
+    --text: #26352C;
+    --muted: #788276;
+    --border: #E7E0D2;
+}
+
+/* MAIN BACKGROUND */
+
+.stApp {
+    background:
+        radial-gradient(circle at 5% 5%, #E8E9D8 0%, transparent 28%),
+        linear-gradient(135deg, #F8F4E9, #FFFFFF 55%, #F0F2E9);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+}
+
+/* HIDE SIDEBAR */
+
+[data-testid="stSidebar"] {
+    display: none;
+}
+
+.block-container {
+    max-width: 1450px;
+    padding: 2rem 2.5rem 4rem;
+}
+
+/* HEADER */
+
+.brand-header {
+    padding: 25px 30px;
+    border-radius: 20px;
+    background: linear-gradient(
+        125deg,
+        var(--burgundy-dark),
+        var(--burgundy),
+        var(--green-dark)
+    );
+    border: 1px solid rgba(196,154,69,.5);
+    box-shadow: 0 12px 35px rgba(64,18,34,.18);
+}
+
+.brand-header h1 {
+    color: #FFFFFF !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.brand-header p {
+    color: #F3E8D5 !important;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* HEADINGS */
+
+h1, h2, h3, h4 {
+    color: var(--burgundy) !important;
+    font-weight: 800 !important;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+}
+
+p, label, span {
+    color: var(--text);
+}
+
+/* NAVIGATION */
+
+.workspace-label {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 20px 0 10px;
+}
+
+.nav-footnote {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: right;
+    padding: 10px;
+}
+
+/* RADIO NAVIGATION */
+
+div[role="radiogroup"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 13px;
+    background: rgba(255,255,255,.75);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(50,60,40,.06);
+}
+
+div[role="radiogroup"] label {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 16px;
+    transition: all .25s ease;
+}
+
+div[role="radiogroup"] label:hover {
+    background: #E8EBDD;
+    border-color: var(--green);
+    transform: translateY(-2px);
+}
+
+div[role="radiogroup"] label[data-checked="true"] {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+div[role="radiogroup"] label[data-checked="true"] p,
+div[role="radiogroup"] label[data-checked="true"] span {
+    color: white !important;
+    font-weight: 800;
+}
+
+/* KPI CARDS */
+
+[data-testid="stMetric"] {
+    background: linear-gradient(145deg, #FFFFFF, #F5F2E8);
+    padding: 20px;
+    border-radius: 17px;
+    border: 1px solid var(--border);
+    box-shadow: 0 7px 22px rgba(35,70,45,.07);
+    transition: all .3s ease;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 28px rgba(35,70,45,.12);
+}
+
+[data-testid="stMetricLabel"] {
+    color: var(--green) !important;
+    font-weight: 700;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--burgundy) !important;
+    font-weight: 900;
+}
+
+/* BUTTONS */
+
+.stButton > button,
+.stDownloadButton > button,
+.stFormSubmitButton > button {
+    background: linear-gradient(
+        120deg,
+        var(--green),
+        var(--green-dark)
+    );
+    color: #FFFFFF !important;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 11px 20px;
+    font-weight: 800;
+    transition: all .3s ease;
+    box-shadow: 0 5px 14px rgba(36,91,64,.15);
+}
+
+.stButton > button:hover,
+.stDownloadButton > button:hover,
+.stFormSubmitButton > button:hover {
+    background: linear-gradient(
+        120deg,
+        var(--burgundy),
+        var(--burgundy-dark)
+    );
+    color: #FFFFFF !important;
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+/* INPUT FIELDS */
+
+.stTextInput input,
+.stNumberInput input,
+.stDateInput input,
+.stSelectbox div[data-baseweb="select"] {
+    background: #FFFFFF !important;
+    color: var(--text) !important;
+    border: 1px solid #DCD8C9 !important;
+    border-radius: 10px !important;
+}
+
+.stTextInput input:focus,
+.stNumberInput input:focus {
+    border-color: var(--green) !important;
+    box-shadow: 0 0 0 2px rgba(36,91,64,.12) !important;
+}
+
+/* FORMS */
+
+[data-testid="stForm"] {
+    background: rgba(255,255,255,.78);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(40,60,40,.06);
+}
+
+/* DATA TABLES */
+
+[data-testid="stDataFrame"] {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(40,60,40,.05);
+}
+
+/* EXPANDERS */
+
+[data-testid="stExpander"] {
+    background: rgba(255,255,255,.8);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+/* ALERTS */
+
+[data-testid="stAlert"] {
+    border-radius: 13px;
+}
+
+/* DIVIDER */
+
+hr {
+    border-color: var(--border);
+}
+
+/* CHARTS */
+
+[data-testid="stPlotlyChart"] {
+    background: rgba(255,255,255,.75);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 5px 20px rgba(40,60,40,.05);
+}
+
+/* FILE UPLOADER */
+
+[data-testid="stFileUploader"] {
+    background: #FFFFFF;
+    border: 2px dashed var(--green);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+/* CHECKBOX */
+
+.stCheckbox label {
+    color: var(--green) !important;
+    font-weight: 600;
+}
+
+/* FOOTER */
+
+.app-footer {
+    margin-top: 50px;
+    padding: 22px;
+    text-align: center;
+    color: #F8F4E9 !important;
+    background: linear-gradient(
+        120deg,
+        var(--burgundy-dark),
+        var(--green-dark)
+    );
+    border: 1px solid var(--gold);
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 768px) {
+
+    .block-container {
+        padding: 1rem .8rem 3rem;
+    }
+
+    .brand-header {
+        padding: 18px;
+    }
+
+    .brand-header h1 {
+        font-size: 23px;
+    }
+
+    div[role="radiogroup"] {
+        gap: 5px;
+    }
+
+    div[role="radiogroup"] label {
+        padding: 8px 10px;
+    }
+
+    [data-testid="stMetric"] {
+        padding: 13px;
+    }
+}
